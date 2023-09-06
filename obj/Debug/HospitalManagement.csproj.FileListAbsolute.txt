@@ -1,0 +1,7 @@
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\bin\Debug\HospitalManagement.exe.config
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\bin\Debug\HospitalManagement.exe
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\bin\Debug\HospitalManagement.pdb
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\obj\Debug\HospitalManagement.csproj.AssemblyReference.cache
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\obj\Debug\HospitalManagement.csproj.CoreCompileInputs.cache
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\obj\Debug\HospitalManagement.exe
+C:\Users\mwjan\OneDrive\바탕 화면\UTS master of IT\32998 .NET programming\Ass1_.net\Ass1_14194423_MyungWonJang\HospitalManagement\obj\Debug\HospitalManagement.pdb

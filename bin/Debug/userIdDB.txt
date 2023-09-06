@@ -1,0 +1,5 @@
+00001,admin,admin,15,Broadway,Ultimo,NSW,admin@hostipal.com,0422111222
+10001,david,patientson,63,Miller St,Pyrmont,NSW,user@gmail.com,0563112223
+10002,Davey,Flu,86,Abercrombie St,Chippendale,NSW,adam@gmail.com,0235445556
+20001,jack,doctorson,500,George St,Sydney,NSW,george@gmail.com,0598655524
+20002,david,doctorson,61,Broadway,Ultimo,NSW,hacker@gmail.com,0652314445
