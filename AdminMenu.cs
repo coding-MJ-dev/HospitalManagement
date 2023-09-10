@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -79,10 +82,10 @@ namespace HospitalManagement
                     checkPatientDetails();
                     break;
                 case 5:
-                    //addDoctor(null, null, null, null, null, null, null, null, null, null, 2, null);
+                    addDoctor(null, null, null, null, null, null, null, null, null, null, 2, null);
                     break;
                 case 6:
-                    //addPatient(null, null, null, null, null, null, null, null, null, null, 1, "david doctorson");
+                    addPatient(null, null, null, null, null, null, null, null, null, null, 1, "david doctorson");
                     break;
                 case 7:
                     loginMenu.displayLoginMenu(null);
@@ -97,8 +100,28 @@ namespace HospitalManagement
 
 
         public void showDoctorList() {
-            Console.WriteLine("doctors");
-            Console.ReadKey();
+
+
+            Console.Clear();
+            Console.WriteLine("┌────────────────────────────────────┐");
+            Console.WriteLine("|  DOTNET Hospital Management System |");
+            Console.WriteLine("|------------------------------------|");
+            Console.WriteLine("|             Add Doctor             |");
+            Console.WriteLine("└────────────────────────────────────┘");
+            Console.Write("Registering a new doctor with the DOTNET Hopital Management System");
+            Console.WriteLine();
+            Console.WriteLine("Please choose an option:");
+            Console.WriteLine("1. List all doctors");
+            Console.WriteLine("2. Check doctor details");
+            Console.WriteLine("3. List all patients");
+            Console.WriteLine("4. Check patient details");
+            Console.WriteLine("5. Add doctor");
+            Console.WriteLine("6. Add patient");
+            Console.WriteLine("7. Logout");
+            Console.WriteLine("8. Exit");
+            Console.WriteLine();
+
+            Console.WriteLine();
         }
         public void checkDoctorDetails() {
         }
@@ -106,24 +129,210 @@ namespace HospitalManagement
         }
         public void checkPatientDetails() {
         }
-        /*
-        public void addDoctor(null, null, null, null, null, null, null, null, null, null, 2, null)
+        
+        public void addDoctor(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 2, string doctor = "NULL")
         {
+            
+            Console.Clear();
+            Console.WriteLine("┌────────────────────────────────────┐");
+            Console.WriteLine("|  DOTNET Hospital Management System |");
+            Console.WriteLine("|------------------------------------|");
+            Console.WriteLine("|             Add Doctor             |");
+            Console.WriteLine("└────────────────────────────────────┘");
+            Console.WriteLine("Registering a new doctor with the DOTNET Hopital Management System");
+            Console.WriteLine();
+            Console.WriteLine("First name:");
+            Console.WriteLine("Last name:");
+            Console.WriteLine("Email:");
+            Console.WriteLine("Phone:");
+            Console.WriteLine("Street number:");
+            Console.WriteLine("Street:");
+            Console.WriteLine("City:");
+            Console.WriteLine("State:");
+            Console.WriteLine();
+
+
+            //Auto generate the id and password
+            id = getDoctorID();
+            password = setPassword();
+
+
+
+            //Add first name
+            if (firstName != null)
+            {
+                Console.SetCursorPosition(11, 7);
+                Console.WriteLine(firstName);
+            }
+            else
+            {
+                Console.SetCursorPosition(11, 7);
+                firstName = Console.ReadLine();
+            }
+
+            //lastname
+            if (lastName != null)
+            {
+                Console.SetCursorPosition(10, 8);
+                Console.WriteLine(lastName);
+            }
+            else
+            {
+                Console.SetCursorPosition(10, 8);
+                lastName = Console.ReadLine();
+            }
+
+
+            //email
+            if (email != null)
+            {
+                Console.SetCursorPosition(6, 9);
+                if (email.Contains('@') && (email.Contains(".")))
+                {
+                    Console.WriteLine(lastName);
+                }
+            }           
+            else
+            {
+                Console.SetCursorPosition(6, 9);
+                email = Console.ReadLine();
+            }
+
+            // phone
+            if (phone != null)
+            {
+                Console.SetCursorPosition(6, 10);
+                Console.WriteLine(phone);
+            }
+            else
+            {
+                Console.SetCursorPosition(6, 10);
+                phone = Console.ReadLine();
+            }
+
+            //streetNumber
+            if (streetNumber != null)
+            {
+                Console.SetCursorPosition(14, 11);
+                Console.WriteLine(streetNumber);
+            }
+            else
+            {
+                Console.SetCursorPosition(14, 11);
+                streetNumber = Console.ReadLine();
+            }
+
+            //street
+            if (street != null)
+            {
+                Console.SetCursorPosition(7, 12);
+                Console.WriteLine(street);
+            }
+            else
+            {
+                Console.SetCursorPosition(7, 12);
+                street = Console.ReadLine();
+            }
+
+            //city
+            if (city != null)
+            {
+                Console.SetCursorPosition(5, 13);
+                Console.WriteLine(city);
+            }
+            else
+            {
+                Console.SetCursorPosition(5, 13);
+                city = Console.ReadLine();
+            }
+
+            //state
+            Console.SetCursorPosition(6, 14);
+            state = Console.ReadLine();
+            if (state != null)
+            {
+                //save the info
+                Console.WriteLine("\n\nDo you want to add this user (y/n)?");
+                Console.SetCursorPosition(2, 18);
+                string select = Console.ReadLine();
+                if (select.Equals("y"))
+                {
+                    string info = (id + ',' + password + ',' + firstName + ',' + lastName + ',' + email + ',' + phone + ',' + streetNumber + ',' + street + ',' + city + ',' + state + ',' + usertype + ',' + doctor);
+
+
+                    string doctorName = firstName + " " + lastName;
+                    Console.Write(doctorName);
+                    Console.WriteLine(" added to the System");
+                    
+
+                    //System.IO.File.ReadAllLines("userIdDB.txt");
+
+                    using (StreamWriter append = File.AppendText("userIdDB.txt"))
+                    {
+                        append.WriteLine(info);
+                    }
+                    Console.ReadKey();
+                    Console.Clear();
+                    showAdminMenu();
+
+                }
+                else 
+                {
+                    Console.Clear();
+                    showAdminMenu();
+                }
+            }
+            else
+            {
+                Console.SetCursorPosition(6, 14);
+                state = Console.ReadLine();
+            }
+
+
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                showAdminMenu();
+            }
+
 
 
 
         }
-        public void addPatient(null, null, null, null, null, null, null, null, null, null, 1, "david doctorson")
+        public void addPatient(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 1, string doctor = "david doctorson")
         {
 
         }
-        */
+
         public void exit()
         {
+            Console.Clear();
+            showAdminMenu();
+        }
+        
 
+        public string getDoctorID()
+        {
+            int lastDocID = 0;
+            //find the last doctorID
+            foreach (User user in users)
+            {
+                var position = user.Usertype;
+                if (position == 2) {
+                    if(lastDocID < Convert.ToInt32(user.Id))
+                    {
+                       lastDocID = Convert.ToInt32(user.Id);
+                    }
+                }
+            }
+            return Convert.ToString(lastDocID + 1);
         }
 
-
+        public string setPassword()
+        {
+            string defaultPassword = "0000";
+            return defaultPassword;
+        }
 
         //Get user details
         public static List<User> getUsers()
@@ -160,4 +369,11 @@ namespace HospitalManagement
 
         }
     }
+
 }
+
+
+
+
+
+

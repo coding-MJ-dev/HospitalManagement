@@ -27,7 +27,7 @@ namespace HospitalManagement
         private string city;
         private string state;
 
-        private UserType _usertype;
+        private int usertype;
 
         private string doctor;
 
@@ -46,7 +46,7 @@ namespace HospitalManagement
             this.state = state;
             //enum 
             // 0 = admin,  1 = patient, 2 = doctor
-            this._usertype = (UserType)usertype;
+            this.usertype = usertype;
             this.doctor = doctor;
         }
 
@@ -65,7 +65,7 @@ namespace HospitalManagement
 
 
 
-        public UserType _UserType { get { return _usertype; } set { this._usertype = value; } }
+        public int Usertype { get { return usertype; } set { this.usertype = value; } }
 
         public string Doctor { get { return doctor; } set { this.doctor = value; } }
 

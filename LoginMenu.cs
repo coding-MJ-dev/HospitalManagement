@@ -96,12 +96,12 @@ namespace HospitalManagement
                         Console.WriteLine("\n\nValid Credentials");
                         //Console.ReadKey();
                         loginUser = user;
-                        int userType = Convert.ToInt16(user._UserType);
-                        if (userType == 0)
+                        int loginUserType = user.Usertype;
+                        if (loginUserType == 0)
                             adminMenu.showAdminMenu();
-                        else if (userType == 1)
+                        else if (loginUserType == 1)
                             adminMenu.showAdminMenu();
-                        else if (userType == 2)
+                        else if (loginUserType == 2)
                             adminMenu.showAdminMenu();
 
                     }
@@ -118,33 +118,7 @@ namespace HospitalManagement
             }
         }
 
-        public void showAdminMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("╔════════════════════════════════════╗");
-            Console.WriteLine("|  WELCOME TO ADMIN SYSTEM : ");
-            Console.WriteLine(loginUser.Id);
-            Console.WriteLine("|════════════════════════════════════|");
-        }
 
-
-        public void showPatientMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("╔════════════════════════════════════╗");
-            Console.WriteLine("|  WELCOME TO Patient SYSTEM : ");
-            Console.WriteLine(loginUser.Id);
-            Console.WriteLine("|════════════════════════════════════|");
-        }
-
-        public void showDoctorMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("╔════════════════════════════════════╗");
-            Console.WriteLine("|  WELCOME TO Doctor SYSTEM : ");
-            Console.WriteLine(loginUser.Id);
-            Console.WriteLine("|════════════════════════════════════|");
-        }
 
     }   
 
