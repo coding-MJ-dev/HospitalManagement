@@ -3,4 +3,5 @@
 10002,0000,Davey,Flu,86,Abercrombie St,Chippendale,NSW,adam@gmail.com,0235445556,1,jack doctorson
 20001,0000,jack,doctorson,500,George St,Sydney,NSW,george@gmail.com,0598655524,2,NULL
 20002,0000,david,doctorson,61,Broadway,Ultimo,NSW,hacker@gmail.com,0652314445,2,NULL
-20003,0000,ss,sss,ss@s.d,54545,12,da,dasd,dasdad,2,
+20003,0000,ss,sss,ss@s.d,54545,12,da,dasd,dasdad,2,NULL
+10003,0000,patient,pay,d@d.d,1020320,dd,dda,adf,adfadf,1,david doctorson
