@@ -9,7 +9,7 @@ using static HospitalManagement.User;
 namespace HospitalManagement
 {
 
-    internal class LoginMenu
+    internal class LoginMenu : Menu
     {
 
         // public MainMenu mainmenu = null;
@@ -26,11 +26,16 @@ namespace HospitalManagement
         public void displayLoginMenu(string id)
         {
             Console.Clear();
+            /*
             Console.WriteLine("┌────────────────────────────────────┐");
             Console.WriteLine("|  DOTNET Hospital Management System |");
             Console.WriteLine("|------------------------------------|");
             Console.WriteLine("|               Login                |");
             Console.WriteLine("└────────────────────────────────────┘");
+            */
+
+            showPage("Login");
+            
             Console.WriteLine("ID:                                   ");
             Console.WriteLine("Password:                             ");
 
@@ -62,12 +67,12 @@ namespace HospitalManagement
             //string password = Console.ReadLine();
             while (true)
             {
-                ConsoleKeyInfo ck = Console.ReadKey(true);
-                if (ck.Key != ConsoleKey.Enter)
+                ConsoleKeyInfo click = Console.ReadKey(true);
+                if (click.Key != ConsoleKey.Enter)
                 {
-                    if (ck.Key != ConsoleKey.Backspace)
+                    if (click.Key != ConsoleKey.Backspace)
                     {
-                        password += ck.KeyChar.ToString();
+                        password += click.KeyChar.ToString();
                         Console.Write("*");
                     }
                     else

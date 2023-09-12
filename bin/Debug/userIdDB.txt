@@ -5,3 +5,4 @@
 20002,0000,david,doctorson,61,Broadway,Ultimo,NSW,hacker@gmail.com,0652314445,2,NULL
 20003,0000,ss,sss,ss@s.d,54545,12,da,dasd,dasdad,2,NULL
 10003,0000,patient,pay,d@d.d,1020320,dd,dda,adf,adfadf,1,david doctorson
+20004,0000,Tana,P,tp@uts.com,202020,20,altimo,sydney,nsw,2,NULL

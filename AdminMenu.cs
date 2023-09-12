@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HospitalManagement
 {
-    internal class AdminMenu
+    internal class AdminMenu : Menu
     {
         public LoginMenu loginMenu;
         public User loginUser;
@@ -32,11 +32,7 @@ namespace HospitalManagement
 
 
             Console.Clear();
-            Console.WriteLine("┌────────────────────────────────────┐");
-            Console.WriteLine("|  DOTNET Hospital Management System |");
-            Console.WriteLine("|------------------------------------|");
-            Console.WriteLine("|         Administrator Menu         |");
-            Console.WriteLine("└────────────────────────────────────┘");
+            showPage("Administrator Menu");
             Console.Write("Welcome to DONET Hospital Management System: ");
             Console.WriteLine(username);
             Console.WriteLine();
@@ -96,22 +92,28 @@ namespace HospitalManagement
             }
       
         }
-
+        /// <summary>
+        /// //여기하는중!!!!!!!!!!!! 표만들다 말았다!!!!!!!!
+        /// </summary>
 
 
         public void showDoctorList() {
 
 
             Console.Clear();
+
+
+
             Console.WriteLine("┌────────────────────────────────────┐");
             Console.WriteLine("|  DOTNET Hospital Management System |");
             Console.WriteLine("|------------------------------------|");
-            Console.WriteLine("|             Add Doctor             |");
+            Console.WriteLine("|             All Doctors            |");
             Console.WriteLine("└────────────────────────────────────┘");
-            Console.Write("Registering a new doctor with the DOTNET Hopital Management System");
             Console.WriteLine();
-            Console.WriteLine("Please choose an option:");
-            Console.WriteLine("1. List all doctors");
+            Console.Write("All doctors registered to the DOTNET Hopital Management System");
+            Console.WriteLine();
+            Console.WriteLine("name             | Email Address         | Phone         | Address                       ");
+            Console.WriteLine("-----------------------------------------------------------------------------------------");
             Console.WriteLine("2. Check doctor details");
             Console.WriteLine("3. List all patients");
             Console.WriteLine("4. Check patient details");
@@ -155,6 +157,7 @@ namespace HospitalManagement
             //Auto generate the id and password
             id = getDoctorID();
             password = setPassword();
+            doctor = "NULL";
 
 
 
@@ -187,16 +190,7 @@ namespace HospitalManagement
             if (email != null)
             {
                 Console.SetCursorPosition(6, 9);
-                if (email.Contains('@') && (email.Contains(".")))
-                {
-                    Console.WriteLine(lastName);
-                }
-                else
-                {
-                    Console.WriteLine("\n\nPlease using proper email address");
-                    Console.ReadKey();
-                    addPatient(firstName, lastName, phone, email, null, null, null, null, null, null, 2, "NULL");
-                }
+                Console.WriteLine(email);
             }           
             else
             {
@@ -334,6 +328,7 @@ namespace HospitalManagement
             //Auto generate the id and password
             id = getPatientID();
             password = setPassword();
+            doctor = "david doctorson";
 
 
 
@@ -534,6 +529,9 @@ namespace HospitalManagement
             string defaultPassword = "0000";
             return defaultPassword;
         }
+
+        // DataTable 
+        
 
         //Get user details
         public static List<User> getUsers()
