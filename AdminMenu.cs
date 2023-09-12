@@ -152,7 +152,6 @@ namespace HospitalManagement
             makePatientcolumn();
             makePatientrow(users);
 
-            Console.WriteLine();
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
                 Console.Clear();
@@ -182,7 +181,6 @@ namespace HospitalManagement
             makePatientrow(theUser);
 
             Console.WriteLine();
-            Console.ReadKey();
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
                 Console.Clear();
@@ -194,13 +192,9 @@ namespace HospitalManagement
         {
             
             Console.Clear();
-            Console.WriteLine("┌────────────────────────────────────┐");
-            Console.WriteLine("|  DOTNET Hospital Management System |");
-            Console.WriteLine("|------------------------------------|");
-            Console.WriteLine("|             Add Doctor             |");
-            Console.WriteLine("└────────────────────────────────────┘");
-            Console.WriteLine("Registering a new doctor with the DOTNET Hopital Management System");
+            showPage("Add Doctor");
             Console.WriteLine();
+            Console.WriteLine("Registering a new doctor with the DOTNET Hopital Management System");
             Console.WriteLine("First name:");
             Console.WriteLine("Last name:");
             Console.WriteLine("Email:");
@@ -365,11 +359,7 @@ namespace HospitalManagement
         {
 
             Console.Clear();
-            Console.WriteLine("┌────────────────────────────────────┐");
-            Console.WriteLine("|  DOTNET Hospital Management System |");
-            Console.WriteLine("|------------------------------------|");
-            Console.WriteLine("|             Add Patient            |");
-            Console.WriteLine("└────────────────────────────────────┘");
+            showPage("Add Patient");
             Console.WriteLine("Registering a new patient with the DOTNET Hopital Management System");
             Console.WriteLine();
             Console.WriteLine("First name:");
