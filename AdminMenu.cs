@@ -92,44 +92,102 @@ namespace HospitalManagement
             }
       
         }
-        /// <summary>
-        /// //여기하는중!!!!!!!!!!!! 표만들다 말았다!!!!!!!!
-        /// </summary>
-
 
         public void showDoctorList() {
-
-
             Console.Clear();
-
-
-
-            Console.WriteLine("┌────────────────────────────────────┐");
-            Console.WriteLine("|  DOTNET Hospital Management System |");
-            Console.WriteLine("|------------------------------------|");
-            Console.WriteLine("|             All Doctors            |");
-            Console.WriteLine("└────────────────────────────────────┘");
-            Console.WriteLine();
+            showPage("All Doctors");
             Console.Write("All doctors registered to the DOTNET Hopital Management System");
-            Console.WriteLine();
-            Console.WriteLine("name             | Email Address         | Phone         | Address                       ");
-            Console.WriteLine("-----------------------------------------------------------------------------------------");
-            Console.WriteLine("2. Check doctor details");
-            Console.WriteLine("3. List all patients");
-            Console.WriteLine("4. Check patient details");
-            Console.WriteLine("5. Add doctor");
-            Console.WriteLine("6. Add patient");
-            Console.WriteLine("7. Logout");
-            Console.WriteLine("8. Exit");
-            Console.WriteLine();
+            Console.SetCursorPosition(0, 8);
+            makeDoctortcolumn();
+            makeDoctorRow(users);
 
             Console.WriteLine();
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                showAdminMenu();
+            }
         }
         public void checkDoctorDetails() {
+            Console.Clear();
+            showPage("Doctors Detail");
+            Console.Write("Please enter the ID of the doctor who's details you are checking. Or press a button to menu");
+            Console.SetCursorPosition(0, 8);
+
+            string userId = Console.ReadLine();
+            List<User> theDoctor = new List<User>();
+            theDoctor = searchDoctor(users, userId);
+            Console.SetCursorPosition(0, 8);
+            if (theDoctor.Count == 0)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.Write("Invalid User. Press a button to go back to the main menu.");
+                Console.ReadKey();
+                Console.Clear();
+                showAdminMenu();
+            }
+
+            makeDoctortcolumn();
+            makeDoctorRow(theDoctor);
+
+            Console.WriteLine();
+            Console.ReadKey();
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                showAdminMenu();
+            }
         }
+
+
+
+
+
         public void showPatientList() {
+
+            Console.Clear();
+            showPage("All patients");
+            Console.Write("All Patients registered to the DOTNET Hopital Management System");
+            Console.SetCursorPosition(0, 8);
+            makePatientcolumn();
+            makePatientrow(users);
+
+            Console.WriteLine();
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                showAdminMenu();
+            }
         }
         public void checkPatientDetails() {
+            Console.Clear();
+            showPage("Patients Detail");
+            Console.Write("Please enter the ID of the patient who's details you are checking. Or press a button to menu");
+            Console.SetCursorPosition(0, 8);
+
+            string userId = Console.ReadLine();
+            List<User> theUser = new List<User>();
+            theUser = searchPatient(users, userId);
+            Console.SetCursorPosition(0, 8);
+            if (theUser.Count == 0)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.Write("Invalid User. Press a button to go back to the main menu.");
+                Console.ReadKey();
+                Console.Clear();
+                showAdminMenu();
+            }
+
+            makePatientcolumn();
+            makePatientrow(theUser);
+
+            Console.WriteLine();
+            Console.ReadKey();
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                showAdminMenu();
+            }
         }
         
         public void addDoctor(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 2, string doctor = "NULL")
@@ -564,11 +622,40 @@ namespace HospitalManagement
                 users.Add(user);
             }
             return users;
-
-
         }
-    }
 
+        public List<User> searchPatient(List<User> users, string id)
+        {
+            
+            List<User> searchedUser = new List<User>();
+            foreach (User user in users)
+            {
+                if (user.Id == id && user.Usertype == 1)
+                {
+                    searchedUser.Add(user);
+                }
+            }
+
+            return searchedUser;
+        }
+
+        public List<User> searchDoctor(List<User> users, string id)
+        {
+
+            List<User> searchedUser = new List<User>();
+            foreach (User user in users)
+            {
+                if (user.Id == id && user.Usertype == 2)
+                {
+                    searchedUser.Add(user);
+                }
+            }
+
+            return searchedUser;
+        }
+
+
+    }
 }
 
 

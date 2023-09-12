@@ -97,14 +97,16 @@ namespace HospitalManagement
                 string street = userInfo[7];
                 string city = userInfo[8];
                 string state = userInfo[9];
-                int _usertype = int.Parse(userInfo[10]);
+                int usertype = int.Parse(userInfo[10]);
                 string doctor = userInfo[11];
 
-                User user = new User(id, password, firstName, lastName, email, phone, streetNumber, street, city, state, _usertype, doctor);
+                User user = new User(id, password, firstName, lastName, email, phone, streetNumber, street, city, state, usertype, doctor);
                 users.Add(user);
             }
             return users;
         }
+
+
 
     }
 }
