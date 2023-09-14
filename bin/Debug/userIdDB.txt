@@ -1,9 +1,11 @@
 0,0,david,adminson,adam@gmail.com,0235445556,86,Abercrombie St,Chippendale,NSW,0,NULL
-10001,0000,david,patientson,user@gmail.com,0563112223,63,Miller St,Pyrmont,NSW,1,jack doctorson
-10002,0000,Davey,Flu,adam@gmail.com,0235445556,86,Abercrombie St,Chippendale,NSW,1,jack doctorson
+10001,0000,david,patientson,user@gmail.com,0563112223,63,Miller St,Pyrmont,NSW,1,20001
+10002,0000,Davey,Flu,adam@gmail.com,0235445556,86,Abercrombie St,Chippendale,NSW,1,20001
 20001,0000,jack,doctorson,george@gmail.com,0598655524,500,George St,Sydney,NSW,2,NULL
 20002,0000,david,doctorson,hacker@gmail.com,0652314445,61,Broadway,Ultimo,NSW,2,NULL
 20003,0000,ss,sss,ss@s.d,54545,12,da,dasd,dasdad,2,NULL
 10003,0000,patient,pay,d@d.d,1020320,dd,dda,adf,adfadf,1,david doctorson
 20004,0000,Tana,P,tp@uts.com,202020,20,altimo,sydney,nsw,2,NULL
 20005,0000,final,good,ya@good.com,1010101010,23,hey,yo,NSW,2,NULL
+20006,0000,dr,real,rd@da.cp,2002212132,20,ultimo,sydeny,NSW,2,NULL
+10004,0000,pati,ent,aya@do.com,6563453452,342,pain,sydney,nsw,1,david doctorson

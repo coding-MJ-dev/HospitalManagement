@@ -207,7 +207,7 @@ namespace HospitalManagement
 
 
             //Auto generate the id and password
-            id = getDoctorID();
+            id = getDoctorID(users);
             password = setPassword();
             doctor = "NULL";
 
@@ -374,7 +374,7 @@ namespace HospitalManagement
 
 
             //Auto generate the id and password
-            id = getPatientID();
+            id = getPatientID(users);
             password = setPassword();
             doctor = "david doctorson";
 
@@ -534,7 +534,7 @@ namespace HospitalManagement
         
 
 
-
+        /*
 
         // Fuctions
         public string getDoctorID()
@@ -577,11 +577,13 @@ namespace HospitalManagement
             string defaultPassword = "0000";
             return defaultPassword;
         }
-
+        */
         // DataTable 
-        
+
 
         //Get user details
+
+        /*
         public static List<User> getUsers()
         {
             List<User> users = new List<User>();
@@ -612,7 +614,7 @@ namespace HospitalManagement
                 users.Add(user);
             }
             return users;
-        }
+        
 
         public List<User> searchPatient(List<User> users, string id)
         {
@@ -643,7 +645,7 @@ namespace HospitalManagement
 
             return searchedUser;
         }
-
+        }*/
 
     }
 }

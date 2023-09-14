@@ -227,5 +227,114 @@ namespace HospitalManagement
             Console.Write("|");
             Console.WriteLine();
         }
+
+
+
+        //getuser data
+        public static List<User> getUsers()
+        {
+            List<User> users = new List<User>();
+            string[] lines = System.IO.File.ReadAllLines("userIdDB.txt");
+
+            // Split each line using "," as delimiter and print the values as
+            // User Name: ------, Passowrd: .... "
+            // Hint: use foreach loop
+            foreach (string info in lines)
+            {
+                // Split each line
+                string[] userInfo = info.Split(',');
+                string id = userInfo[0];
+                string password = userInfo[1];
+                string firstName = userInfo[2];
+                string lastName = userInfo[3];
+                string email = userInfo[4];
+                string phone = userInfo[5];
+                string streetNumber = userInfo[6];
+                string street = userInfo[7];
+                string city = userInfo[8];
+                string state = userInfo[9];
+                int _usertype = int.Parse(userInfo[10]);
+                string doctor = userInfo[11];
+
+
+                User user = new User(id, password, firstName, lastName, email, phone, streetNumber, street, city, state, _usertype, doctor);
+                users.Add(user);
+            }
+            return users;
+        }
+
+        // Fuctions
+        public string getDoctorID(List<User> users)
+        {
+            int lastDocID = 0;
+            //find the last doctorID
+            foreach (User user in users)
+            {
+                var position = user.Usertype;
+                if (position == 2)
+                {
+                    if (lastDocID < Convert.ToInt32(user.Id))
+                    {
+                        lastDocID = Convert.ToInt32(user.Id);
+                    }
+                }
+            }
+            return Convert.ToString(lastDocID + 1);
+        }
+        public string getPatientID(List<User> users)
+        {
+            int lastDocID = 0;
+            //find the last doctorID
+            foreach (User user in users)
+            {
+                var position = user.Usertype;
+                if (position == 1)
+                {
+                    if (lastDocID < Convert.ToInt32(user.Id))
+                    {
+                        lastDocID = Convert.ToInt32(user.Id);
+                    }
+                }
+            }
+            return Convert.ToString(lastDocID + 1);
+        }
+
+
+        public string setPassword()
+        {
+            string defaultPassword = "0000";
+            return defaultPassword;
+        }
+
+        public List<User> searchPatient(List<User> users, string id)
+        {
+
+            List<User> searchedUser = new List<User>();
+            foreach (User user in users)
+            {
+                if (user.Id == id && user.Usertype == 1)
+                {
+                    searchedUser.Add(user);
+                }
+            }
+
+            return searchedUser;
+        }
+
+        public List<User> searchDoctor(List<User> users, string id)
+        {
+
+            List<User> searchedUser = new List<User>();
+            foreach (User user in users)
+            {
+                if (user.Id == id && user.Usertype == 2)
+                {
+                    searchedUser.Add(user);
+                }
+            }
+
+            return searchedUser;
+        }
+
     }
 }

@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace HospitalManagement
 {
-    internal class PatientMenu
+    internal class PatientMenu : Menu
     {
-        public PatientMenu(User user) { }
+        public LoginMenu loginMenu;
+        public User loginUser;
+        public List<User> users = getUsers();
+
+        public PatientMenu(LoginMenu loginMenu) {
+            this.loginMenu = loginMenu;
+        }
 
         public void showPatientMenu()
         {

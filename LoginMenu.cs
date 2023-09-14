@@ -15,10 +15,14 @@ namespace HospitalManagement
         // public MainMenu mainmenu = null;
         public User loginUser = null;
         public AdminMenu adminMenu = null;
+        public DoctorMenu doctorMenu = null;
+        public PatientMenu patientMenu = null;
         public List<User> users = new List<User>();
 
         public LoginMenu(List<User> users) {
             adminMenu = new AdminMenu(this);
+            doctorMenu = new DoctorMenu(this);
+            patientMenu = new PatientMenu(this);
             this.users = users;
             
         }
@@ -26,14 +30,6 @@ namespace HospitalManagement
         public void displayLoginMenu(string id)
         {
             Console.Clear();
-            /*
-            Console.WriteLine("┌────────────────────────────────────┐");
-            Console.WriteLine("|  DOTNET Hospital Management System |");
-            Console.WriteLine("|------------------------------------|");
-            Console.WriteLine("|               Login                |");
-            Console.WriteLine("└────────────────────────────────────┘");
-            */
-
             showPage("Login");
             
             Console.WriteLine("ID:                                   ");
@@ -58,7 +54,6 @@ namespace HospitalManagement
             login(userId, password);
         }
 
-//getuser
 
         private string checkPassword()
         {
@@ -105,9 +100,9 @@ namespace HospitalManagement
                         if (loginUserType == 0)
                             adminMenu.showAdminMenu();
                         else if (loginUserType == 1)
-                            adminMenu.showAdminMenu();
+                            patientMenu.showPatientMenu();
                         else if (loginUserType == 2)
-                            adminMenu.showAdminMenu();
+                            doctorMenu.showDoctorMenu();
 
                     }
                     else
