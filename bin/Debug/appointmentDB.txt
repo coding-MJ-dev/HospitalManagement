@@ -1,0 +1,6 @@
+jack doctorson,10001,cold like symptoms
+jack doctorson,10001,cancer
+jack doctorson,10001,covid
+david doctorson,10002,constipation
+david doctorson,10002,cold
+david doctorson,10002,covid again

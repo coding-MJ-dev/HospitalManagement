@@ -15,6 +15,7 @@ namespace HospitalManagement
         public User loginUser;
         public List<User> users = getUsers();
 
+
         public DoctorMenu(LoginMenu loginMenu) {
             this.loginMenu = loginMenu;
         }
@@ -129,10 +130,12 @@ namespace HospitalManagement
             makeDoctorRow(theDoctor);
 
             Console.WriteLine();
-            Console.ReadKey();
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            while (true)
             {
-                Console.Clear();
+                ConsoleKeyInfo cki;
+                cki = Console.ReadKey();
+                if (cki.Key == ConsoleKey.Escape)
+                    Console.Clear();
                 showDoctorMenu();
             }
         }

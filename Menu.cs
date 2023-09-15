@@ -230,7 +230,7 @@ namespace HospitalManagement
 
 
 
-        //getuser data
+        //get user data
         public static List<User> getUsers()
         {
             List<User> users = new List<User>();
@@ -262,6 +262,35 @@ namespace HospitalManagement
             }
             return users;
         }
+
+        //get appointment data
+        public static List<List<string>> getAppointments()
+        {
+            List<List<string>> appointments = new List<List<string>>();
+            string[] lines = System.IO.File.ReadAllLines("appointmentDB.txt");
+
+            // Split each line using "," as delimiter and print the values as
+            // User Name: ------, Passowrd: .... "
+            // Hint: use foreach loop
+            foreach (string info in lines)
+            {
+                // Split each line
+                string[] userInfo = info.Split(',');
+                string doctor = userInfo[0];
+                string patient = userInfo[1];
+                string description = userInfo[2];
+
+                List<string> appointment = new List<string>();
+                appointment.Add(doctor);
+                appointment.Add(patient);
+                appointment.Add(description);
+
+                appointments.Add(appointment);
+            }
+            return appointments;
+        }
+
+
 
         // Fuctions
         public string getDoctorID(List<User> users)
@@ -334,6 +363,11 @@ namespace HospitalManagement
             }
 
             return searchedUser;
+        }
+
+        public void exit()
+        {
+            Environment.Exit(0);
         }
 
     }
