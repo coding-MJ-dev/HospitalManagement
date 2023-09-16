@@ -65,10 +65,10 @@ namespace HospitalManagement
                     showPatientList(loginUser);
                     break;
                 case 3:
-                    showPatientList();
+                    showAppointmentList(loginUser);
                     break;
                 case 4:
-                    checkPatientDetails();
+                    checkPatientDetails(loginUser);
                     break;
                 case 5:
                     showDoctorDetail(loginUser);
@@ -142,53 +142,18 @@ namespace HospitalManagement
             }
         }
 
-
-
-
-
-        public void showPatientList()
-        {
-
-            Console.Clear();
-            showPage("All patients");
-            Console.Write("All Patients registered to the DOTNET Hopital Management System");
-            Console.SetCursorPosition(0, 8);
-            makePatientcolumn();
-            makePatientrow(users);
-
-            while (true)
-            {
-                ConsoleKeyInfo cki;
-                Console.WriteLine();
-                Console.WriteLine("Press a button to go back to the menu.");
-                cki = Console.ReadKey();
-                if (cki.Key == ConsoleKey.Escape)
-                    Console.Clear();
-                showDoctorMenu(loginUser);
-            }
-        }
-        public void checkPatientDetails()
+        public void showAppointmentList(User loginUser)
         {
             Console.Clear();
-            showPage("Patients Detail");
-            Console.Write("Please enter the ID of the patient who's details you are checking. Or press a button to menu");
+            showPage("All Appointments");
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+            Console.WriteLine("Appoint for {0}", username);
             Console.SetCursorPosition(0, 8);
-
-            string userId = Console.ReadLine();
-            List<User> theUser = new List<User>();
-            theUser = searchPatient(users, userId);
-            Console.SetCursorPosition(0, 8);
-            if (theUser.Count == 0)
-            {
-                Console.SetCursorPosition(0, 10);
-                Console.Write("Invalid User. Press a button to go back to the main menu.");
-                Console.ReadKey();
-                Console.Clear();
-                showDoctorMenu(loginUser);
-            }
-
-            makePatientcolumn();
-            makePatientrow(theUser);
+            getAppointments();
+            var appointments = getTheDoctorsAppointment(loginUser);
+            makeAppointmentcolumn();
+            makeAppointmentRow(appointments);
+            Console.WriteLine();
 
             while (true)
             {
@@ -201,9 +166,13 @@ namespace HospitalManagement
                 showDoctorMenu(loginUser);
             }
 
+        }
 
+        public void checkPatientDetails(User loginUser)
+        {
 
         }
+
 
     }
 }

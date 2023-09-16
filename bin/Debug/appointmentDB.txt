@@ -1,6 +1,6 @@
 jack doctorson,david patientson,cold like symptoms
 jack doctorson,david patientson,cancer
 jack doctorson,david patientson,covid
-david doctors,Davey Flu,constipation
+david doctorson,Davey Flu,constipation
 david doctorson,Davey Flu,cold
 jack doctorson,david patientson,AHHHHHHHHHHHHHHHHHHHHHH

@@ -426,6 +426,29 @@ namespace HospitalManagement
             }
             return myAppointment;
         }
+        public List<string[]> getTheDoctorsAppointment(User loginUser)
+        {
+            List<string[]> appointments = getAppointments();
+            List<string[]> myAppointment = new List<string[]>();
+            string doc;
+            string patient;
+            string desc;
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+
+
+            //find the login user's appoinment
+            foreach (string[] apponitment in appointments)
+            {
+                if (username == apponitment[0])
+                {
+                    doc = apponitment[0];
+                    patient = apponitment[1];
+                    desc = apponitment[2];
+                    myAppointment.Add(apponitment);
+                }
+            }
+            return myAppointment;
+        }
 
 
 
