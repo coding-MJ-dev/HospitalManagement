@@ -170,7 +170,37 @@ namespace HospitalManagement
 
         public void checkPatientDetails(User loginUser)
         {
+            Console.Clear();
+            showPage("Check Patients Detail");
+            Console.Write("Enter the ID of the patient to check: ");
+            Console.SetCursorPosition(0, 8);
 
+            string userId = Console.ReadLine();
+            List<User> theUser = new List<User>();
+            theUser = searchPatient(users, userId);
+            Console.SetCursorPosition(0, 8);
+            if (theUser.Count == 0)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.Write("Invalid User. Press a button to go back to the main menu.");
+                Console.ReadKey();
+                Console.Clear();
+                showDoctorMenu(loginUser);
+            }
+
+            makePatientcolumn();
+            makePatientrow(theUser);
+
+            while (true)
+            {
+                ConsoleKeyInfo cki;
+                Console.WriteLine();
+                Console.WriteLine("Press a button to go back to the menu.");
+                cki = Console.ReadKey();
+                if (cki.Key == ConsoleKey.Escape)
+                    Console.Clear();
+                showDoctorMenu(loginUser);
+            }
         }
 
 

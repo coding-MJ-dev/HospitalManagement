@@ -168,7 +168,8 @@ namespace HospitalManagement
                 showAdminMenu();
             }
         }
-        public void checkPatientDetails() {
+        public void checkPatientDetails()
+        {
             Console.Clear();
             showPage("Patients Detail");
             Console.Write("Please enter the ID of the patient who's details you are checking. Or press a button to menu");
@@ -201,7 +202,7 @@ namespace HospitalManagement
                 showAdminMenu();
             }
         }
-        
+
         public void addDoctor(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 2, string doctor = "NULL")
         {
             
