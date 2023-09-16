@@ -62,7 +62,7 @@ namespace HospitalManagement
                     showDoctorDetail(loginUser);
                     break;
                 case 2:
-                    checkDoctorDetails();
+                    showPatientList(loginUser);
                     break;
                 case 3:
                     showPatientList();
@@ -109,28 +109,25 @@ namespace HospitalManagement
                 showDoctorMenu(loginUser);
             }
         }
-        public void checkDoctorDetails()
+        public void showPatientList(User loginUser)
         {
             Console.Clear();
-            showPage("Doctors Detail");
-            Console.Write("Please enter the ID of the doctor who's details you are checking. Or press a button to menu");
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+            showPage("My Patients");
+            Console.Write("Patients assigned to {0}:", username);
             Console.SetCursorPosition(0, 8);
 
-            string userId = Console.ReadLine();
-            List<User> theDoctor = new List<User>();
-            theDoctor = searchDoctor(users, userId);
-            Console.SetCursorPosition(0, 8);
-            if (theDoctor.Count == 0)
+            List<User> myPatients = new List<User>();
+            foreach (var user in users)
             {
-                Console.SetCursorPosition(0, 10);
-                Console.Write("Invalid User. Press a button to go back to the main menu.");
-                Console.ReadKey();
-                Console.Clear();
-                showDoctorMenu(loginUser); 
+                if (user.Doctor == username)
+                {
+                    myPatients.Add(user);
+                }
             }
 
-            makeDoctortcolumn();
-            makeDoctorRow(theDoctor);
+            makePatientcolumn();
+            makePatientrow(myPatients);
 
             Console.WriteLine();
             while (true)
@@ -206,7 +203,7 @@ namespace HospitalManagement
 
 
 
-        
+        }
 
     }
 }
