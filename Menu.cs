@@ -370,5 +370,22 @@ namespace HospitalManagement
             Environment.Exit(0);
         }
 
+        public List<User> getMyDoctor(User loginUser)
+        {
+            List<User> myDocotors = new List<User>();
+            User myDoctor;
+            List<User> users = getUsers();
+            //find the last doctorID
+            foreach (User user in users)
+            {
+                if (loginUser.Doctor == (user.FirstName + " " + user.LastName))
+                {
+                    myDoctor = user;
+                    myDocotors.Add(myDoctor);
+                }
+            }
+            return myDocotors;
+        }
+
     }
 }

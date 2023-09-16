@@ -109,7 +109,9 @@ namespace HospitalManagement
             Console.Write("Your doctor:");
             Console.SetCursorPosition(0, 8);
             makeDoctortcolumn();
-            makeDoctorRow(users);
+
+            List<User> myDocotors = getMyDoctor(loginUser);
+            makeDoctorRow(myDocotors);
 
             Console.WriteLine();
             while (true)
