@@ -22,6 +22,7 @@ namespace HospitalManagement
             loginUser = loginMenu.loginUser;
         }
 
+        //main paitent menu
         public void showPatientMenu(User loginUser)
         {
             string username = loginUser.FirstName + " " + loginUser.LastName;
@@ -79,6 +80,8 @@ namespace HospitalManagement
 
         }
 
+
+        //display the login users detail
         public void showPatientDetail(User loginUser)
         {
             Console.Clear();
@@ -105,6 +108,7 @@ namespace HospitalManagement
 
         }
 
+        //user login user's doctor detail
         public void myDoctorDetails(User loginUser)
         {
             Console.Clear();
@@ -129,7 +133,7 @@ namespace HospitalManagement
             }
         }
 
-
+        // show login user's appotintment
         public void showAppointmentList(User loginUser)
         {
             Console.Clear();
@@ -156,6 +160,7 @@ namespace HospitalManagement
 
         }
 
+        // add a new appointment to appointment DB
         public void makeAppointment(User loginUser)
         {
             Console.Clear();
@@ -229,6 +234,7 @@ namespace HospitalManagement
 
         }
 
+        //retrieve doctor's information
         public void showDoctorList()
         {
             Console.SetCursorPosition(0, 8);
@@ -237,7 +243,7 @@ namespace HospitalManagement
             Console.WriteLine();
         }
 
-
+        //make the doctor table with number
         public void makeDoctortcolumn()
         {
             int startptr = 8;
@@ -336,10 +342,10 @@ namespace HospitalManagement
             }
         }
 
+
+        // allocate a doctor to a patient
         public void editDocInfo(User loginUser, string docName)
         {
-
-
             string[] lines = File.ReadAllLines("userIdDB.txt");
             // Split each line using "," as delimiter and print the values as
             // User Name: ------, Passowrd: .... "
@@ -386,6 +392,7 @@ namespace HospitalManagement
 
         }
 
+        // add a appointment descrtiption to appointmentDB.txt 
         public void addAppointmentDescription(User loginUser, string appointmentDescription)
         {
             string doc = loginUser.Doctor;

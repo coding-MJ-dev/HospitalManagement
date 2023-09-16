@@ -23,13 +23,10 @@ namespace HospitalManagement
 
 
 
-
-        public void showAdminMenu()
+        //main admin menu
+        public void showAdminMenu(User loginUser)
         {
-
             string username = loginUser.FirstName + " " + loginUser.LastName;
-            
-
             Console.Clear();
             showPage("Administrator Menu");
             Console.Write("Welcome to DONET Hospital Management System: ");
@@ -59,28 +56,28 @@ namespace HospitalManagement
             {
                 Console.WriteLine(" \nPlease enter number from 1 to 8.");
                 Console.ReadKey();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
 
             switch (number)
             {
                 case 1:
-                    showDoctorList();
+                    showDoctorList(loginUser);
                     break;
                 case 2:
-                    checkDoctorDetails();
+                    checkDoctorDetails(loginUser);
                     break;
                 case 3:
-                    showPatientList();
+                    showPatientList(loginUser);
                     break;
                 case 4:
-                    checkPatientDetails();
+                    checkPatientDetails(loginUser);
                     break;
                 case 5:
-                    addDoctor(null, null, null, null, null, null, null, null, null, null, 2, null);
+                    addDoctor(loginUser, null, null, null, null, null, null, null, null, null, null, 2, null);
                     break;
                 case 6:
-                    addPatient(null, null, null, null, null, null, null, null, null, null, 1, "0");
+                    addPatient(loginUser, null, null, null, null, null, null, null, null, null, null, 1, "0");
                     break;
                 case 7:
                     loginMenu.displayLoginMenu(null);
@@ -92,7 +89,8 @@ namespace HospitalManagement
       
         }
 
-        public void showDoctorList() {
+        //display the all doctors' detail
+        public void showDoctorList(User loginUser) {
             Console.Clear();
             showPage("All Doctors");
             Console.Write("All doctors registered to the DOTNET Hopital Management System");
@@ -109,10 +107,12 @@ namespace HospitalManagement
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.Escape)
                     Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
         }
-        public void checkDoctorDetails() {
+
+        //display the a doctors' detail by using ID search
+        public void checkDoctorDetails(User loginUser) {
             Console.Clear();
             showPage("Doctors Detail");
             Console.Write("Please enter the ID of the doctor who's details you are checking. Or press a button to menu");
@@ -128,7 +128,7 @@ namespace HospitalManagement
                 Console.Write("Invalid User. Press a button to go back to the main menu.");
                 Console.ReadKey();
                 Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
 
             makeDoctortcolumn();
@@ -144,15 +144,12 @@ namespace HospitalManagement
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.Escape)
                     Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
         }
 
-
-
-
-
-        public void showPatientList() {
+        //display the all patients' detail
+        public void showPatientList(User loginUser) {
 
             Console.Clear();
             showPage("All patients");
@@ -164,10 +161,12 @@ namespace HospitalManagement
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
                 Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
         }
-        public void checkPatientDetails()
+
+        //display the a patients' detail by using ID search
+        public void checkPatientDetails(User loginUser)
         {
             Console.Clear();
             showPage("Patients Detail");
@@ -184,7 +183,7 @@ namespace HospitalManagement
                 Console.Write("Invalid User. Press a button to go back to the main menu.");
                 Console.ReadKey();
                 Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
 
             makePatientcolumn();
@@ -198,11 +197,13 @@ namespace HospitalManagement
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.Escape)
                     Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
         }
 
-        public void addDoctor(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 2, string doctor = "NULL")
+
+        // add a new doctor info to DB
+        public void addDoctor(User loginUser, string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 2, string doctor = "NULL")
         {
             
             Console.Clear();
@@ -341,13 +342,13 @@ namespace HospitalManagement
 
                     Console.ReadKey();
                     Console.Clear();
-                    showAdminMenu();
+                    showAdminMenu(loginUser);
 
                 }
                 else 
                 {
                     Console.Clear();
-                    showAdminMenu();
+                    showAdminMenu(loginUser);
                 }
             }
             else
@@ -360,16 +361,16 @@ namespace HospitalManagement
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
                 Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
 
 
 
 
         }
-         
-        // add new Patient
-        public void addPatient(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 1, string doctor = "0")
+
+        // add a new patient info to DB
+        public void addPatient(User loginUser, string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 1, string doctor = "0")
         {
 
             Console.Clear();
@@ -431,7 +432,7 @@ namespace HospitalManagement
                 {
                     Console.WriteLine("\n\nPlease using proper email address");
                     Console.ReadKey();
-                    addPatient(firstName, lastName, phone, email, null, null, null, null, null, null, 1, "0");
+                    addPatient(loginUser, firstName, lastName, phone, email, null, null, null, null, null, null, 1, "0");
                 }
             }
             else
@@ -517,13 +518,13 @@ namespace HospitalManagement
 
                     Console.ReadKey();
                     Console.Clear();
-                    showAdminMenu();
+                    showAdminMenu(loginUser);
 
                 }
                 else
                 {
                     Console.Clear();
-                    showAdminMenu();
+                    showAdminMenu(loginUser);
                 }
             }
             else
@@ -536,7 +537,7 @@ namespace HospitalManagement
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
                 Console.Clear();
-                showAdminMenu();
+                showAdminMenu(loginUser);
             }
 
         }

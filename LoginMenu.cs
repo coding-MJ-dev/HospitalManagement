@@ -11,8 +11,6 @@ namespace HospitalManagement
 
     internal class LoginMenu : Menu
     {
-
-        // public MainMenu mainmenu = null;
         public User loginUser = null;
         public AdminMenu adminMenu = null;
         public DoctorMenu doctorMenu = null;
@@ -27,6 +25,7 @@ namespace HospitalManagement
             
         }
 
+        //Display login main menu
         public void displayLoginMenu(string id)
         {
             Console.Clear();
@@ -55,11 +54,11 @@ namespace HospitalManagement
         }
 
 
+        // chcecking password function
         private string checkPassword()
         {
             string password = null;
             Console.SetCursorPosition(9, 6);
-            //string password = Console.ReadLine();
             while (true)
             {
                 ConsoleKeyInfo click = Console.ReadKey(true);
@@ -84,21 +83,21 @@ namespace HospitalManagement
             return password;
         }
 
+        //login function
         public void login(string userId, string userPassword)
         {
-            //List<User> users = getUsers();
             foreach (User user in users)
             {
                 if (user.Id == userId)
                 {
+                    //Base on loginUserType send the user different menu
                     if (user.vaildateUser(userId, userPassword))
                     {
                         Console.WriteLine("\n\nValid Credentials");
-                        //Console.ReadKey();
                         loginUser = user;
                         int loginUserType = user.Usertype;
                         if (loginUserType == 0)
-                            adminMenu.showAdminMenu();
+                            adminMenu.showAdminMenu(loginUser);
                         else if (loginUserType == 1)
                             patientMenu.showPatientMenu(loginUser);
                         else if (loginUserType == 2)

@@ -16,6 +16,7 @@ namespace HospitalManagement
             this.content = content;
         }
 
+        // head banner
         public void showPage(string content)
         {
             string title = "DOTNET Hospital Management System";
@@ -39,7 +40,7 @@ namespace HospitalManagement
 
 
 
-
+        // making patient type table - header
         public void makePatientcolumn()
         {
             int startptr = 8;
@@ -76,7 +77,7 @@ namespace HospitalManagement
             }
             Console.WriteLine();
         }
-
+        // making patient type table - content
         public void makePatientrow(List<User> users)
         {
             int startrow = 10;
@@ -85,7 +86,7 @@ namespace HospitalManagement
 
             foreach (User user in users)
             {
-                //Find user by using usertype (usertype = 0(admin), 1(patinet), 2(doctor)
+                // find the patient based on user type
                 if (user.Usertype == 1)
                 {
                     Console.SetCursorPosition(0, startrow);
@@ -126,6 +127,7 @@ namespace HospitalManagement
         }
 
 
+        // making doctor type table - header
         public void makeDoctortcolumn()
         {
             int startptr = 8;
@@ -161,6 +163,8 @@ namespace HospitalManagement
             }
             Console.WriteLine();
         }
+
+        // making doctor type table - content
         public void makeDoctorRow(List<User> users)
         {
             int startrow = 10;
@@ -169,7 +173,7 @@ namespace HospitalManagement
 
             foreach (User user in users)
             {
-                //Find user by using usertype (usertype = 0(admin), 1(patinet), 2(doctor)
+                // find the doctor based on user type
                 if (user.Usertype == 2)
                 {
                     Console.SetCursorPosition(0, startrow);
@@ -207,7 +211,7 @@ namespace HospitalManagement
         }
 
 
-
+        // making console line
         public void makeLine()
         {
 
@@ -237,12 +241,10 @@ namespace HospitalManagement
             List<User> users = new List<User>();
             string[] lines = System.IO.File.ReadAllLines("userIdDB.txt");
 
-            // Split each line using "," as delimiter and print the values as
-            // User Name: ------, Passowrd: .... "
-            // Hint: use foreach loop
+
             foreach (string info in lines)
             {
-                // Split each line
+                // Split each line using "," as delimiter and print the values
                 string[] userInfo = info.Split(',');
                 string id = userInfo[0];
                 string password = userInfo[1];
@@ -292,8 +294,7 @@ namespace HospitalManagement
         }
 
 
-
-        // Fuctions
+        // get a doctor ID based on user type
         public string getDoctorID(List<User> users)
         {
             int lastDocID = 0;
@@ -311,6 +312,8 @@ namespace HospitalManagement
             }
             return Convert.ToString(lastDocID + 1);
         }
+
+        // get a patient ID
         public string getPatientID(List<User> users)
         {
             int lastDocID = 0;
@@ -329,13 +332,14 @@ namespace HospitalManagement
             return Convert.ToString(lastDocID + 1);
         }
 
-
+        //setting a default password
         public string setPassword()
         {
             string defaultPassword = "0000";
             return defaultPassword;
         }
 
+        //search a patient based on userID
         public List<User> searchPatient(List<User> users, string id)
         {
 
@@ -351,6 +355,7 @@ namespace HospitalManagement
             return searchedUser;
         }
 
+        //search a doctor based on userID
         public List<User> searchDoctor(List<User> users, string id)
         {
 
@@ -366,6 +371,8 @@ namespace HospitalManagement
             return searchedUser;
         }
 
+
+        // get all doctor information from userlist
         public List<User> searchAllDoctor(List<User> users)
         {
 
@@ -381,11 +388,8 @@ namespace HospitalManagement
             return searchedUser;
         }
 
-        public void exit()
-        {
-            Environment.Exit(0);
-        }
 
+        // get a specific doc information based on the loginUser
         public List<User> getMyDoctor(User loginUser)
         {
             List<User> myDocotors = new List<User>();
@@ -403,6 +407,7 @@ namespace HospitalManagement
             return myDocotors;
         }
 
+        // get a specific patient's appointment
         public List<string[]> getThePatientAppointment(User loginUser)
         {
             List<string[]> appointments = getAppointments();
@@ -426,6 +431,8 @@ namespace HospitalManagement
             }
             return myAppointment;
         }
+
+        // get a specific doctor's appointment
         public List<string[]> getTheDoctorsAppointment(User loginUser)
         {
             List<string[]> appointments = getAppointments();
@@ -452,7 +459,7 @@ namespace HospitalManagement
 
 
 
-
+        // creat appointment table - header
         public void makeAppointmentcolumn()
         {
             int startptr = 8;
@@ -486,6 +493,8 @@ namespace HospitalManagement
             }
             Console.WriteLine();
         }
+
+        // creat appointment table - content
         public void makeAppointmentRow(List<string[]> appointments)
         {
             int startrow = 10;
@@ -526,6 +535,11 @@ namespace HospitalManagement
             }
         }
 
+        //exit option
+        public void exit()
+        {
+            Environment.Exit(0);
+        }
 
 
 

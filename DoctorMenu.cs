@@ -15,12 +15,12 @@ namespace HospitalManagement
         public User loginUser;
         public List<User> users = getUsers();
 
-
         public DoctorMenu(LoginMenu loginMenu) {
             this.loginMenu = loginMenu;
             loginUser = loginMenu.loginUser;
         }
 
+        //main doctor menu
         public void showDoctorMenu(User loginUser)
         {
             string username = loginUser.FirstName + " " + loginUser.LastName;
@@ -83,6 +83,7 @@ namespace HospitalManagement
 
         }
 
+        //display the login users detail
         public void showDoctorDetail(User loginUser)
         {
             Console.Clear();
@@ -109,6 +110,8 @@ namespace HospitalManagement
                 showDoctorMenu(loginUser);
             }
         }
+
+        //user login user's patient detail
         public void showPatientList(User loginUser)
         {
             Console.Clear();
@@ -142,6 +145,7 @@ namespace HospitalManagement
             }
         }
 
+        // show login user's appotintment
         public void showAppointmentList(User loginUser)
         {
             Console.Clear();
@@ -168,6 +172,7 @@ namespace HospitalManagement
 
         }
 
+        // search a specific patient data
         public void checkPatientDetails(User loginUser)
         {
             Console.Clear();
@@ -175,6 +180,7 @@ namespace HospitalManagement
             Console.Write("Enter the ID of the patient to check: ");
             Console.SetCursorPosition(0, 8);
 
+            //find a patient by using patient data
             users = getUsers();
             string userId = Console.ReadLine();
             List<User> theUser = new List<User>();
@@ -204,6 +210,7 @@ namespace HospitalManagement
             }
         }
 
+        // show the a specific patient appointment data allocated to logined doctor
         public void showAppointmentWithAPatient(User loginUser)
         {
             Console.Clear();
