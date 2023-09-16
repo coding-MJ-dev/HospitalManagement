@@ -9,3 +9,6 @@
 20005,0000,final,good,ya@good.com,1010101010,23,hey,yo,NSW,2,NULL
 20006,0000,dr,real,rd@da.cp,2002212132,20,ultimo,sydeny,NSW,2,NULL
 10004,0000,pati,ent,aya@do.com,6563453452,342,pain,sydney,nsw,1,david doctorson
+10005,0000,new,patient,ne@new.e,123123123,123,ho,ahaha,NSW,1,jack doctorson
+20007,0000,DR,Avinash,avi@uts.com,20223132,1,2,dk,NSW,2,NULL
+10006,0000,final,test,test@f.com,010101010,0,finish,all,NSW,1,jack doctorson

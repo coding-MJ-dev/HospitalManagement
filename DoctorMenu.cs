@@ -175,6 +175,7 @@ namespace HospitalManagement
             Console.Write("Enter the ID of the patient to check: ");
             Console.SetCursorPosition(0, 8);
 
+            users = getUsers();
             string userId = Console.ReadLine();
             List<User> theUser = new List<User>();
             theUser = searchPatient(users, userId);

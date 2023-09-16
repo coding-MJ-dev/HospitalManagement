@@ -31,7 +31,7 @@ namespace HospitalManagement
         {
             Console.Clear();
             showPage("Login");
-            
+            loginUser = null;
             Console.WriteLine("ID:                                   ");
             Console.WriteLine("Password:                             ");
 

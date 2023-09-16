@@ -9,13 +9,6 @@ namespace HospitalManagement
 {
     internal class User
     {
-        public enum UserType
-        {
-            admin = 0,
-            patient,
-            doctor
-        }
-
         private string id;
         private string password;
         private string firstName;
@@ -26,9 +19,7 @@ namespace HospitalManagement
         private string street;
         private string city;
         private string state;
-
         private int usertype;
-
         private string doctor;
 
 
@@ -44,8 +35,6 @@ namespace HospitalManagement
             this.street = street;
             this.city = city;
             this.state = state;
-            //enum 
-            // 0 = admin,  1 = patient, 2 = doctor
             this.usertype = usertype;
             this.doctor = doctor;
         }

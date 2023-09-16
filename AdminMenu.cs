@@ -18,6 +18,7 @@ namespace HospitalManagement
         public AdminMenu(LoginMenu loginMenu)
         {
             this.loginMenu = loginMenu;
+            loginUser = loginMenu.loginUser;
         }
 
 
@@ -25,11 +26,9 @@ namespace HospitalManagement
 
         public void showAdminMenu()
         {
-            loginUser = loginMenu.loginUser;
-            //string user1 = users[1].Doctor;
-            //string userID = loginUser.Id;
-            string username = loginUser.FirstName + " " + loginUser.LastName;
 
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+            
 
             Console.Clear();
             showPage("Administrator Menu");

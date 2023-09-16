@@ -394,9 +394,8 @@ namespace HospitalManagement
             string info = (doc + "," + username + "," + desc);
             using (StreamWriter append = File.AppendText("appointmentDB.txt"))
             {
-                append.Write(info);
-                append.Flush();
-                append.Close();
+                append.WriteLine(info);
+
             }
 
 
