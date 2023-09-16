@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -264,9 +265,9 @@ namespace HospitalManagement
         }
 
         //get appointment data
-        public static List<List<string>> getAppointments()
+        public static List<string[]> getAppointments()
         {
-            List<List<string>> appointments = new List<List<string>>();
+            List<string[]> appointments = new List<string[]>();
             string[] lines = System.IO.File.ReadAllLines("appointmentDB.txt");
 
             // Split each line using "," as delimiter and print the values as
@@ -280,10 +281,10 @@ namespace HospitalManagement
                 string patient = userInfo[1];
                 string description = userInfo[2];
 
-                List<string> appointment = new List<string>();
-                appointment.Add(doctor);
-                appointment.Add(patient);
-                appointment.Add(description);
+                string[] appointment = new string[3];
+                appointment[0] = doctor;
+                appointment[1] = patient;
+                appointment[2] = description;
 
                 appointments.Add(appointment);
             }
@@ -386,6 +387,109 @@ namespace HospitalManagement
             }
             return myDocotors;
         }
+
+        public List<string[]> getThePatientAppointment(User loginUser)
+        {
+            List<string[]> appointments = getAppointments();
+            List<string[]> myAppointment = new List<string[]>();
+            string doc;
+            string patient;
+            string desc;
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+
+
+            //find the login user's appoinment
+            foreach (string[] apponitment in appointments)
+            {
+                if (username == apponitment[1])
+                {
+                    doc = apponitment[0];
+                    patient = apponitment[1];
+                    desc = apponitment[2];
+                    myAppointment.Add(apponitment);
+                }
+            }
+            return myAppointment;
+        }
+
+
+
+
+        public void makeAppointmentcolumn()
+        {
+            int startptr = 8;
+            int column1 = 30;
+            int column2 = 50;
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < column1; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+            }
+            for (int i = 0; i < column2; i++)
+            {
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+            Console.SetCursorPosition(0, startptr);
+            Console.Write("Doctor");
+            Console.SetCursorPosition(31, startptr);
+            Console.Write("Patient");
+            Console.SetCursorPosition(62, startptr);
+            Console.Write("Description");
+            Console.WriteLine();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.Write("─");
+            }
+            Console.WriteLine();
+        }
+        public void makeAppointmentRow(List<string[]> appointments)
+        {
+            int startrow = 10;
+            int column1 = 30;
+            int column2 = 50;
+
+            foreach (var appointment in appointments)
+            {
+                Console.SetCursorPosition(0, startrow);
+                for (int i = 0; i < 2; i++)
+                {
+                    for (int j = 0; j < column1; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.Write("|");
+                }
+                for (int i = 0; i < column2; i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+                Console.SetCursorPosition(0, startrow);
+                Console.Write(appointment[0]);
+                Console.SetCursorPosition(31, startrow);
+                Console.Write(appointment[1]);
+                Console.SetCursorPosition(62, startrow);
+                Console.Write(appointment[2]);
+                Console.WriteLine();
+                Console.SetCursorPosition(0, startrow + 1);
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.Write("─");
+                }
+                Console.WriteLine();
+                startrow += 2;
+
+            }
+        }
+
+
+
 
     }
 }

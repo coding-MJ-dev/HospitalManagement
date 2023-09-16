@@ -11,7 +11,7 @@ namespace HospitalManagement
         public LoginMenu loginMenu;
         public User loginUser;
         public List<User> users = getUsers();
-        public List<List<string>> appointments = getAppointments();
+        public List<string[]> appointments = getAppointments();
 
 
         public PatientMenu(LoginMenu loginMenu) {
@@ -78,13 +78,13 @@ namespace HospitalManagement
 
         public void showPatientDetail(User loginUser)
         {
-            this.loginUser = loginUser;
+            Console.Clear();
             string username = loginUser.FirstName + " " + loginUser.LastName;
             showPage("My details");
             Console.WriteLine("{0}'s Details", username);
             Console.WriteLine();
             Console.WriteLine("patient ID: {0}", loginUser.Id);
-            Console.WriteLine("Full name: {0}", loginUser);
+            Console.WriteLine("Full name: {0}", username);
             Console.WriteLine("Address: {0} {1}, {2}, {3}", loginUser.StreetNumber, loginUser.Street, loginUser.City, loginUser.State);
             Console.WriteLine("Email: {0}", loginUser.Email);
             Console.WriteLine("Phone: {0}", loginUser.Phone);
@@ -105,7 +105,7 @@ namespace HospitalManagement
         public void myDoctorDetails(User loginUser)
         {
             Console.Clear();
-            showPage("My Doctors");
+            showPage("My Doctor");
             Console.Write("Your doctor:");
             Console.SetCursorPosition(0, 8);
             makeDoctortcolumn();
@@ -129,6 +129,25 @@ namespace HospitalManagement
 
         public void showAppointmentList(User loginUser)
         {
+            Console.Clear();
+            showPage("My Appointment");
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+            Console.WriteLine("Appoint for {0}", username);
+            Console.SetCursorPosition(0, 8);
+            var appointments = getThePatientAppointment(loginUser);
+            makeAppointmentcolumn();
+            makeAppointmentRow(appointments);
+            Console.WriteLine();
+            while (true)
+            {
+                ConsoleKeyInfo cki;
+                Console.WriteLine();
+                Console.WriteLine("Press a button to go back to the menu.");
+                cki = Console.ReadKey();
+                if (cki.Key == ConsoleKey.Escape)
+                    Console.Clear();
+                showPatientMenu(loginUser);
+            }
 
         }
 
