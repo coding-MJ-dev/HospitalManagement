@@ -81,7 +81,7 @@ namespace HospitalManagement
                     addDoctor(null, null, null, null, null, null, null, null, null, null, 2, null);
                     break;
                 case 6:
-                    addPatient(null, null, null, null, null, null, null, null, null, null, 1, "david doctorson");
+                    addPatient(null, null, null, null, null, null, null, null, null, null, 1, "0");
                     break;
                 case 7:
                     loginMenu.displayLoginMenu(null);
@@ -319,7 +319,7 @@ namespace HospitalManagement
             {
                 //save the info
                 Console.WriteLine("\n\nDo you want to add this user (y/n)?");
-                Console.SetCursorPosition(2, 18);
+                Console.SetCursorPosition(0, 18);
                 string select = Console.ReadLine();
                 if (select.Equals("y"))
                 {
@@ -369,7 +369,7 @@ namespace HospitalManagement
         }
          
         // add new Patient
-        public void addPatient(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 1, string doctor = "david doctorson")
+        public void addPatient(string id, string password, string firstName, string lastName, string email, string phone, string streetNumber, string street, string city, string state, int usertype = 1, string doctor = "0")
         {
 
             Console.Clear();
@@ -390,7 +390,7 @@ namespace HospitalManagement
             //Auto generate the id and password
             id = getPatientID(users);
             password = setPassword();
-            doctor = "david doctorson";
+            doctor = "0";
 
 
 
@@ -431,7 +431,7 @@ namespace HospitalManagement
                 {
                     Console.WriteLine("\n\nPlease using proper email address");
                     Console.ReadKey();
-                    addPatient(firstName, lastName, phone, email, null, null, null, null, null, null, 1, "david doctorson");
+                    addPatient(firstName, lastName, phone, email, null, null, null, null, null, null, 1, "0");
                 }
             }
             else
@@ -495,7 +495,7 @@ namespace HospitalManagement
             {
                 //save the info
                 Console.WriteLine("\n\nDo you want to add this user (y/n)?");
-                Console.SetCursorPosition(2, 18);
+                Console.SetCursorPosition(0, 18);
                 string select = Console.ReadLine();
                 if (select.Equals("y"))
                 {

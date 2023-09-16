@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static HospitalManagement.User;
 
 namespace HospitalManagement
 {
@@ -11,10 +13,11 @@ namespace HospitalManagement
         public LoginMenu loginMenu;
         public User loginUser;
         public List<User> users = getUsers();
-        public List<string[]> appointments = getAppointments();
+        //public List<string[]> appointments = getAppointments();
 
 
-        public PatientMenu(LoginMenu loginMenu) {
+        public PatientMenu(LoginMenu loginMenu)
+        {
             this.loginMenu = loginMenu;
             loginUser = loginMenu.loginUser;
         }
@@ -40,7 +43,7 @@ namespace HospitalManagement
 
             Console.SetCursorPosition(21, 15);
             int number = 0;
-            
+
             try
             {
                 number = Convert.ToInt32(Console.ReadLine());
@@ -73,7 +76,7 @@ namespace HospitalManagement
                     exit();
                     break;
             }
-            
+
         }
 
         public void showPatientDetail(User loginUser)
@@ -125,7 +128,7 @@ namespace HospitalManagement
                 showPatientMenu(loginUser);
             }
         }
-    
+
 
         public void showAppointmentList(User loginUser)
         {
@@ -138,6 +141,7 @@ namespace HospitalManagement
             makeAppointmentcolumn();
             makeAppointmentRow(appointments);
             Console.WriteLine();
+
             while (true)
             {
                 ConsoleKeyInfo cki;
@@ -153,8 +157,231 @@ namespace HospitalManagement
 
         public void makeAppointment(User loginUser)
         {
+            Console.Clear();
+            showPage("Book Appointment");
+            string description;
+
+
+            if (loginUser.Doctor == "0")
+            {
+                Console.WriteLine("You are not registered with any doctor! please choose which doctor you would like to register with.");
+                User mydoc;
+                var doclist = searchAllDoctor(users);
+                int docNumber = doclist.Count;
+                int num = 0;
+                showDoctorList();
+                Console.WriteLine();
+                Console.SetCursorPosition(0, 7);
+                Console.Write("Please press number:");
+                try
+                {
+                    Console.SetCursorPosition(22, 7);
+                    num = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(" \nInvalid doctor number");
+                    Console.ReadKey();
+                    showPatientMenu(loginUser);
+                }
+
+                if (num <= docNumber)
+                {
+
+                    mydoc = doclist[num - 1];
+
+                    loginUser.Doctor = (mydoc.FirstName + " " + mydoc.LastName);
+                    editDocInfo(loginUser, loginUser.Doctor);
+                }
+                else
+                {
+                    Console.WriteLine(" \nInvalid doctor number");
+                    Console.ReadKey();
+                    showPatientMenu(loginUser);
+                }
+            }
+
+            Console.Clear();
+            showPage("Book Appointment");
+            Console.SetCursorPosition(0, 6);
+            Console.WriteLine("You are booking a new appointment with {0}", loginUser.Doctor);
+            Console.WriteLine("Description of the appointment: ");
+            Console.SetCursorPosition(0, 8);
+            description = Console.ReadLine();
+
+            Console.WriteLine("The appointment has been booked successfully");
+
+
+            while (true)
+            {
+                ConsoleKeyInfo cki;
+                Console.WriteLine();
+                Console.WriteLine("Press a button to go back to the menu.");
+                cki = Console.ReadKey();
+                if (cki.Key == ConsoleKey.Escape)
+                    Console.Clear();
+                showPatientMenu(loginUser);
+            }
+
+
 
         }
 
+        public void showDoctorList()
+        {
+            Console.SetCursorPosition(0, 8);
+            makeDoctortcolumn();
+            makeDoctorRow(users);
+            Console.WriteLine();
+        }
+
+
+        public void makeDoctortcolumn()
+        {
+            int startptr = 8;
+            int column0 = 4;
+            int column1 = 20;
+            int column2 = 40;
+
+            for (int j = 0; j < column0; j++)
+            {
+                Console.Write(" ");
+            }
+            Console.Write("|");
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < column1; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+            }
+            for (int i = 0; i < column2; i++)
+            {
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+            Console.SetCursorPosition(0, startptr);
+            Console.Write(" ");
+            Console.SetCursorPosition(4, startptr);
+            Console.Write("Name");
+            Console.SetCursorPosition(25, startptr);
+            Console.Write("Email");
+            Console.SetCursorPosition(46, startptr);
+            Console.Write("Phone");
+            Console.SetCursorPosition(67, startptr);
+            Console.Write("Address");
+            Console.WriteLine();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.Write("─");
+            }
+            Console.WriteLine();
+        }
+        public void makeDoctorRow(List<User> users)
+        {
+            int startrow = 10;
+            int column0 = 4;
+            int column1 = 20;
+            int column2 = 40;
+            int num = 1;
+
+            foreach (User user in users)
+            {
+                if (user.Usertype == 2)
+                {
+                    Console.SetCursorPosition(0, startrow);
+                    for (int j = 0; j < column0; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.Write("|");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        for (int j = 0; j < column1; j++)
+                        {
+                            Console.Write(" ");
+                        }
+                        Console.Write("|");
+                    }
+                    for (int i = 0; i < column2; i++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.WriteLine();
+                    Console.SetCursorPosition(0, startrow);
+                    Console.Write(num);
+                    Console.SetCursorPosition(4, startrow);
+                    Console.Write(user.FirstName + " " + user.LastName);
+                    Console.SetCursorPosition(25, startrow);
+                    Console.Write(user.Email);
+                    Console.SetCursorPosition(46, startrow);
+                    Console.Write(user.Phone);
+                    Console.SetCursorPosition(67, startrow);
+                    Console.Write(user.StreetNumber + " " + user.Street + " " + user.City + " " + user.State);
+                    Console.WriteLine();
+                    Console.SetCursorPosition(0, startrow + 1);
+                    for (int i = 0; i < 100; i++)
+                    {
+                        Console.Write("─");
+                    }
+                    Console.WriteLine();
+                    num++;
+                    startrow += 2;
+                }
+            }
+        }
+
+        public void editDocInfo(User loginUser, string docName)
+        {
+
+
+            string[] lines = File.ReadAllLines("userIdDB.txt");
+            // Split each line using "," as delimiter and print the values as
+            // User Name: ------, Passowrd: .... "
+            // Hint: use foreach loop
+            int count = 0;
+            foreach (string info in lines)
+            {
+                // Split each line
+                string[] userInfo = info.Split(',');
+
+                if (userInfo[0] == loginUser.Id)
+                {
+                    string id = userInfo[0];
+                    string password = userInfo[1];
+                    string firstName = userInfo[2];
+                    string lastName = userInfo[3];
+                    string email = userInfo[4];
+                    string phone = userInfo[5];
+                    string streetNumber = userInfo[6];
+                    string street = userInfo[7];
+                    string city = userInfo[8];
+                    string state = userInfo[9];
+                    int usertype = int.Parse(userInfo[10]);
+                    string doctor = docName;
+
+                    string newinfo = (id + ',' + password + ',' + firstName + ',' + lastName + ',' + email + ',' + phone + ',' + streetNumber + ',' + street + ',' + city + ',' + state + ',' + usertype + ',' + doctor);
+
+                    lineChanger(newinfo, "userIdDB.txt", count);
+                }
+                else
+                {
+                    count++;
+                }
+
+            }
+            
+
+            static void lineChanger(string newText, string fileName, int line_to_edit)
+            {
+                string[] arrLine = File.ReadAllLines(fileName);
+                arrLine[line_to_edit] = newText;
+                File.WriteAllLines(fileName, arrLine);
+            }
+
+        }
     }
 }

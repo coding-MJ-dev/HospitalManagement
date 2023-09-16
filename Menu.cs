@@ -366,6 +366,21 @@ namespace HospitalManagement
             return searchedUser;
         }
 
+        public List<User> searchAllDoctor(List<User> users)
+        {
+
+            List<User> searchedUser = new List<User>();
+            foreach (User user in users)
+            {
+                if (user.Usertype == 2)
+                {
+                    searchedUser.Add(user);
+                }
+            }
+
+            return searchedUser;
+        }
+
         public void exit()
         {
             Environment.Exit(0);
