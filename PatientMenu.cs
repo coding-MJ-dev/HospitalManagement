@@ -137,6 +137,7 @@ namespace HospitalManagement
             string username = loginUser.FirstName + " " + loginUser.LastName;
             Console.WriteLine("Appoint for {0}", username);
             Console.SetCursorPosition(0, 8);
+            getAppointments();
             var appointments = getThePatientAppointment(loginUser);
             makeAppointmentcolumn();
             makeAppointmentRow(appointments);
@@ -208,6 +209,7 @@ namespace HospitalManagement
             Console.WriteLine("Description of the appointment: ");
             Console.SetCursorPosition(0, 8);
             description = Console.ReadLine();
+            addAppointmentDescription(loginUser, description);
 
             Console.WriteLine("The appointment has been booked successfully");
 
@@ -381,6 +383,22 @@ namespace HospitalManagement
                 arrLine[line_to_edit] = newText;
                 File.WriteAllLines(fileName, arrLine);
             }
+
+        }
+
+        public void addAppointmentDescription(User loginUser, string appointmentDescription)
+        {
+            string doc = loginUser.Doctor;
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+            string desc = appointmentDescription;
+            string info = (doc + "," + username + "," + desc);
+            using (StreamWriter append = File.AppendText("appointmentDB.txt"))
+            {
+                append.Write(info);
+                append.Flush();
+                append.Close();
+            }
+
 
         }
     }
