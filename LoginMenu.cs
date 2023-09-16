@@ -102,7 +102,7 @@ namespace HospitalManagement
                         else if (loginUserType == 1)
                             patientMenu.showPatientMenu(loginUser);
                         else if (loginUserType == 2)
-                            doctorMenu.showDoctorMenu();
+                            doctorMenu.showDoctorMenu(loginUser);
 
                     }
                     else

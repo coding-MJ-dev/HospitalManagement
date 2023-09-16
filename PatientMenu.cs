@@ -13,7 +13,7 @@ namespace HospitalManagement
         public LoginMenu loginMenu;
         public User loginUser;
         public List<User> users = getUsers();
-        //public List<string[]> appointments = getAppointments();
+        
 
 
         public PatientMenu(LoginMenu loginMenu)
