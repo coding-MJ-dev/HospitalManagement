@@ -71,7 +71,7 @@ namespace HospitalManagement
                     checkPatientDetails(loginUser);
                     break;
                 case 5:
-                    showDoctorDetail(loginUser);
+                    showAppointmentWithAPatient(loginUser);
                     break;
                 case 6:
                     loginMenu.displayLoginMenu(null);
@@ -203,6 +203,44 @@ namespace HospitalManagement
             }
         }
 
+        public void showAppointmentWithAPatient(User loginUser)
+        {
+            Console.Clear();
+            showPage("Appointments with");
+            string username = loginUser.FirstName + " " + loginUser.LastName;
+            Console.Write("Enter the ID of the patient you would like to view appointments for: ");
+            Console.SetCursorPosition(0, 7);
+            string userId = Console.ReadLine();
+            List<User> thePatient = new List<User>();
+            thePatient = searchPatient(users, userId);
+            if (thePatient.Count == 0)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.Write("No booking or Invalid patient. Press a button to go back to the main menu.");
+                Console.ReadKey();
+                Console.Clear();
+                showDoctorMenu(loginUser);
+            }
 
+            
+            var appointments = getThePatientAppointment(thePatient[0]);
+
+
+            makeAppointmentcolumn();
+            makeAppointmentRow(appointments);
+            Console.WriteLine();
+
+            while (true)
+            {
+                ConsoleKeyInfo cki;
+                Console.WriteLine();
+                Console.WriteLine("Press a button to go back to the menu.");
+                cki = Console.ReadKey();
+                if (cki.Key == ConsoleKey.Escape)
+                    Console.Clear();
+                showDoctorMenu(loginUser);
+            }
+
+        }
     }
 }
