@@ -3,7 +3,8 @@ jack doctorson,david patientson,cancer
 jack doctorson,david patientson,covid
 david doctorson,Davey Flu,constipation
 david doctorson,Davey Flu,cold
-jack doctorson,david patientson,AHHHHHHHHHHHHHHHHHHHHHH
+jack doctorson,david patientson,sick
 jack doctorson,new patient,Headache and backpain
 jack doctorson,new patient,runny nose
 jack doctorson,final test,regular check up
+jack doctorson,david patientson,hey

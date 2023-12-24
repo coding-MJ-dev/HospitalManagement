@@ -51,6 +51,7 @@ namespace HospitalManagement
             }
 
             login(userId, password);
+
         }
 
 
@@ -102,14 +103,33 @@ namespace HospitalManagement
                             patientMenu.showPatientMenu(loginUser);
                         else if (loginUserType == 2)
                             doctorMenu.showDoctorMenu(loginUser);
+                        else
+                        {
+                            
+                            while (true)
+                            {
 
+                                ConsoleKeyInfo cki;
+                                Console.WriteLine();
+                                Console.WriteLine("\n\nPlease check the name and password");
+                                cki = Console.ReadKey();
+                                if (cki.Key == ConsoleKey.Escape)
+                                    Console.Clear();
+                                displayLoginMenu(null);
+                            }
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("\n\nPlease check the name and password");
-                        if (Console.ReadKey().Key == ConsoleKey.Enter)
+                        while (true)
                         {
-                            Console.Clear();
+
+                            ConsoleKeyInfo cki;
+                            Console.WriteLine();
+                            Console.WriteLine("\n\nPlease check the name and password");
+                            cki = Console.ReadKey();
+                            if (cki.Key == ConsoleKey.Escape)
+                                Console.Clear();
                             displayLoginMenu(null);
                         }
                     }
